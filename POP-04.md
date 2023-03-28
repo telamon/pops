@@ -1,0 +1,71 @@
+# POP-04: HTML Container (Runlevel 0)
+
+This Specification defines format for a web-page embedded within a block.
+
+The first bytes must be `html0` followed by a linebreak `LF`.  
+The zero denotes runlevel.
+
+Then followed by an optional _Headers_ section or a second linebreak `LF` to indicate the start of body.
+
+The `block.size` contains total bytes in block thus it is safe  
+to assume the size of html-document equals `block.size - firstOccurrenceOf("\n\n")`
+
+**Example**
+
+```html
+html0
+Public-Key: <z-base32>
+Date: 1679920149342
+Revision: 1
+Origin: domain.tld
+Cross-Origin-Access: *
+
+<html>
+  <head>
+    <title>Page Title</title>
+    <style>
+      body { color: purple; }
+    </style>
+  </head>
+  <body>
+    <h3>Welcome to my website</h3>
+    <p>Leave a note in the guestbook:</p>
+    <tbd-thread />
+  </body>
+</html>
+```
+
+## Headers
+
+All header names are treated as case-insenstivie.  
+Some header values may be case-sensitive.
+
+
+#### Public-Key `optional`
+May be attached when stored on spacious devices, or might be presented separately.  
+If present, then block signature must be verifiable using this key.  
+
+#### Date `recommended`
+A UTC Time-stamp in milliseconds.
+
+#### Revision `recommended`
+Integer increment, when signing a new version of a previous page this counter must be incremented.
+
+#### Origin `optional`
+
+TBD
+
+## Body
+
+HTML
+
+## Limits
+
+#### Size 64K (R0-R2)
+
+Entire block body (excluding signature and/or parent signature) must not exceed 64 Kilo Bytes
+
+#### Script
+
+Runlevel 0 does not support `<script>` tags.
+If a page contains a script tag it is considered invalid for that runlevel
