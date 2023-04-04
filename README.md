@@ -1,7 +1,7 @@
 POPs
 ====
 
-POPs is short for **Pico\* Overclock Proposals**.  
+POPs is short for **Pico\* Overclock Protocols**.  
 
 They're written with the purpose to document and implement _Transports_, _Silos_ and _Bootloaders_
 of decentralized web-sites that can be run from anything.
