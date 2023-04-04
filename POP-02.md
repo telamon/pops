@@ -16,8 +16,10 @@ It is represented as a flat buffer with 4 components:
 
 
 # Chain
+> This part of the specification is **optional**, a block can be
+> transported/persisted in any container capable of holding it.
 
-A chain is buffer that containing a set of keys and blocks  
+A chain is a flat buffer that contains a set of keys and blocks  
 where each subsequent block _Parent Signature_ equals the  
 signature of it's predecessor.
 
