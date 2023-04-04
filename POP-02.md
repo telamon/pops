@@ -23,7 +23,7 @@ A chain is a flat buffer that contains a set of keys and blocks
 where each subsequent block _Parent Signature_ equals the  
 signature of it's predecessor.
 
-This is the preferred way to transmit data between nodes.
+This provides a simple way to transmit verifiable data between nodes.
 
 
 The chain contains markers denoting the start of a Key or Block.
