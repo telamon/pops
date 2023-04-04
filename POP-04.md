@@ -17,8 +17,9 @@ html0
 Public-Key: <z-base32>
 Date: 1679920149342
 Revision: 1
-Origin: domain.tld
-Cross-Origin-Access: *
+Source: https://myweb.silo1.tld
+Source: https+silo://silo1.tld
+Source: https+silo://silo2.tld
 
 <html>
   <head>
@@ -51,9 +52,10 @@ A UTC Time-stamp in milliseconds.
 #### Revision `recommended`
 Integer increment, when signing a new version of a previous page this counter must be incremented.
 
-#### Origin `optional`
+#### Source `recommended`
+Source header can be repeated multiple times to hint alternative
+locations for the website should one become unavailable.
 
-TBD
 
 ## Body
 
