@@ -41,6 +41,6 @@ occur before a block that depends on it.
 Example:
 
 ```
-PIC0.K0<32-bytes Public Key>B0.<132B + Block>
+PIC0.K0<32-bytes Public Key>B0.<BlkHeader<132B> + BlkBody>
 ```
 
