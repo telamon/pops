@@ -14,7 +14,7 @@ to assume the size of html-document equals `block.size - firstOccurrenceOf("\n\n
 
 ```html
 html0
-Public-Key: <z-base32>
+Public-Key: <PublicKey HEXString64>
 Date: 1679920149342
 Revision: 1
 Source: https://myweb.silo1.tld
