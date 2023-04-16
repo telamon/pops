@@ -71,3 +71,28 @@ Entire block body (excluding signature and/or parent signature) must not exceed 
 
 Runlevel 0 does not support `<script>` tags.
 If a page contains a script tag it is considered invalid for that runlevel
+
+
+## Run Levels
+The runlevel defines the complexity a runtime must provide 
+in order to present a user experience.
+
+| Runlevel | Size  | Custom Elements | Scripting |
+|----------|-------|-----------------|-----------|
+| 0        | 64 kB | no              | no        |
+| 1        | 64 kB | yes             | no        |
+| 2        | 64 kB | yes             | yes       |
+| 3        | 4 MB  | yes             | yes       |
+| 4        | 16 MB | yes             | yes       |
+
+## Custom Elements `TBD POP-0401`
+
+Are higher-order widgets, that solve a particular recurring use-case.
+They must be completely optional but are intended to offer
+a lo-tech approach for site-owners to get started.  
+Any occuring normalization is completely accidental.
+
+- Topic based chat widget
+- Cart & Payment widget
+- Sign Document widget
+
