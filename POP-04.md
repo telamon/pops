@@ -1,4 +1,4 @@
-# POP-04: HTML Container (Runlevel 0)
+# POP-04: Ronin Progressive Web App
 
 This Specification defines format for a web-page embedded within a block.
 
@@ -16,7 +16,6 @@ to assume the size of html-document equals `block.size - firstOccurrenceOf("\n\n
 html0
 Public-Key: <PublicKey HEXString64>
 Date: 1679920149342
-Revision: 1
 Source: https://myweb.silo1.tld
 Source: https+silo://silo1.tld
 Source: https+silo://silo2.tld
