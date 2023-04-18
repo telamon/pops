@@ -74,14 +74,14 @@ The start of chain is denoted by the magic-bytes:
 > transported/persisted without being prepended with `PIC0`
 
 
-| Magic | Hex         | Description                   |
-|-------|-------------|-------------------------------|
-| PIC0  | 50 49 43 30 | Pico Internet Chain version 0 |
+| Magic | Hex            | Description                   |
+|-------|----------------|-------------------------------|
+| PIC0  | 80, 73, 67, 48 | Pico Internet Chain version 0 |
 
 
 Example: hex encoded chain with 1 key and 2 blocks
 
 ```
-504943306a922f9723ee10039f73320bcc111893939100150a8216d955c00b3ee3a3cdf5a821462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b00046861636b2b80f9fd730c2733d5ef36965aa1336509434552f7fd57a031b1ea5ddc41e09d15b6462d0acb300cc183dd7d56d60f5251fe6714525866d24d10ad00c80ced8e46462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b0006706c616e6574
+807367486a922f9723ee10039f73320bcc111893939100150a8216d955c00b3ee3a3cdf5a821462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b00046861636b2b80f9fd730c2733d5ef36965aa1336509434552f7fd57a031b1ea5ddc41e09d15b6462d0acb300cc183dd7d56d60f5251fe6714525866d24d10ad00c80ced8e46462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b0006706c616e6574
 ```
 
