@@ -101,8 +101,9 @@ then the start of chain **can** be denoted using the following magic-bytes:
 ```
 6aee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a12109649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b2b14b5e829984a3dcd62f9983a56aa4f6eb6ba0a2c62e0b382fbf1b674a45b69b725ea41ce9622ffa1c35c3ff251d7dac4fbfa744cc76afbd84557a869544cef5a09649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c65250006706c616e6574
 ```
-<sup>If you can decode this, well done.</sup>
+> If you can decode this, well done. Your loader is complete!
 
 ---
+## visual summary
 
 ![Fig 1.](./fig/pop-02.png)
