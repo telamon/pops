@@ -103,4 +103,6 @@ then the start of chain **can** be denoted using the following magic-bytes:
 ```
 <sup>If you can decode this, well done.</sup>
 
+---
+
 ![Fig 1.](./fig/pop-02.png)
