@@ -7,42 +7,16 @@ Purpose:
  - Compatiblity with most modern digital devices.
  - The simpler the better.
 
+This spec describes 1 format byte and two types of segments: Key and Block.
+
 ![Fig 1.](./fig/pop-02.png)
 
-There are two types of Segments: Key and Block.
+## FMT
 
-## Key Segment
-POP-01 public keys are simply prefixed with a `(`
-`(<32bytes>`
+fmt is short for format.  
+It is a single byte and hints the loader what kind of data to expect.
 
-<small>Sample in hex</small>
-```
-6a922f9723ee10039f73320bcc111893939100150a8216d955c00b3ee3a3cdf5a8
-```
-
-## Block Segment
-A block is binary data prepended with a signature.
-
-A plain buffer containing the following components:
-
-- `Fmt` A single byte identifying the format of blocks
-- `SIG` Signature = `sign(blake3(PSIG + SIZE + BODY))` // See POP-01
-- `PSIG` Parent Signature: optional, 64 zeros denotes genesis block
-- `SIZE` two or four bytes. Lite 64KB / Phat (soft limit 16MB)
-- `Body` a buffer of data with length equal to `SIZE`.
-
-Note: `SIG` is synonymous with `BlockID`
-
-<small>Sample in hex</small>
-```
-29462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b00046861636b
-```
-
-### Header
-
-The header starts with one byte that specifies the block format.
-
-**Fmt Byte**  
+**bit values**  
 
 Bit 7 being the highest bit and 0 the lowest.
 
@@ -56,6 +30,44 @@ Bit 7 being the highest bit and 0 the lowest.
 | 5   | RESERVED | Always `1`                       |
 | 6   | RESERVED | Always `0`                       |
 | 7   | RESERVED | Always `0`                       |
+
+## Key Segment
+POP-01 public keys presented in their binary form and prefixed with the ASCII char `(`.
+`(<32bytes Public Key>`
+
+<small>Sample in hex</small>
+```
+6aee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a1
+```
+<!-- Secret:
+f1d0ea8c8dc3afca9766ee6104f02b6ea427f1d24e3e4d6813b09946dff11dfa
+-->
+
+## Block Segment
+A block is a plain buffer containing data and a signature.
+
+<small>Layout</small>
+```
+[fmt][sig][psig][size][data]
+```
+
+- `fmt` A single byte identifying the format of blocks
+- `sig` Signature = `sign(blake3(psig + size + body))` // See POP-01
+- `psig` Parent Signature: optional, 64 zeros denotes genesis block
+- `size` two or four bytes. Lite 64KB / Phat (soft limit 16MB)
+- `body` a buffer of data with length equal to `size`.
+
+Note: `sig` is synonymous with `BlockID`
+
+<small>Sample in hex</small>
+
+```
+2909649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b
+```
+
+### Block Header
+
+The header starts with one byte that specifies the block format:
 
 **Section offsets**
 
@@ -78,19 +90,18 @@ This provides a simple way to transmit verifiable data between nodes.
 All keys required to validate the chain _should_ be included, but a key _must_ never
 occur after a block that depends on it.
 
-The start of chain is denoted by the magic-bytes:
-> This part of the spec is **optional**, a block can be
-> transported/persisted without being prepended with `PIC0`
-
+When a chain is stored or transfered over an unlikely medium,
+then the start of chain **can** be denoted using the following magic-bytes:
 
 | Magic | Hex            | Description                   |
 |-------|----------------|-------------------------------|
 | PIC0  | 80, 73, 67, 48 | Pico Internet Chain version 0 |
 
 
-Example: hex encoded chain with 1 key and 2 blocks
+<small>Example: hex encoded chain with 1 key and 2 blocks</small>
 
 ```
-807367486a922f9723ee10039f73320bcc111893939100150a8216d955c00b3ee3a3cdf5a821462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b00046861636b2b80f9fd730c2733d5ef36965aa1336509434552f7fd57a031b1ea5ddc41e09d15b6462d0acb300cc183dd7d56d60f5251fe6714525866d24d10ad00c80ced8e46462e2c9f195b400019908bc747a279597c56b32ead05d2a351100c26e4c4eeb8ac698a59a2d165cbaec07481c3cf3624b0d82b4d6b340a52aa26e3c5acec392b0006706c616e6574
+6aee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a12109649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b2b14b5e829984a3dcd62f9983a56aa4f6eb6ba0a2c62e0b382fbf1b674a45b69b725ea41ce9622ffa1c35c3ff251d7dac4fbfa744cc76afbd84557a869544cef5a09649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c65250006706c616e6574
 ```
+<sup>If you can decode this, well done.</sup>
 
