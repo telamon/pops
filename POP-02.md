@@ -1,5 +1,12 @@
 # POP-02: Binary Block and Chain
 
+Purpose:
+ - A **verifiable** and highly **transferable** data container.
+ - Flat memory format, zero copy on read.
+ - Append on write.
+ - Compatiblity with most modern digital devices.
+ - The simpler the better.
+
 ![Fig 1.](./fig/pop-02.png)
 
 There are two types of Segments: Key and Block.
