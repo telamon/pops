@@ -1,5 +1,7 @@
 # POP-02: Binary Block and Chain
 
+![Fig 1.](./fig/pop-02.png)
+
 There are two types of Segments: Key and Block.
 
 ## Key Segment

@@ -23,8 +23,8 @@ They're written with the purpose to document and implement:
 - [POP-05: Markdown container](./POP-05.md)
 
 ---
-<div style="font-size: 5em; text-align: center">☯️</div>
-<em style="display: block; text-align:center">In a tiny universe.<br/> The smallest pinch of gold,<br/> is worth a mountain.</em>
+<!-- <div style="font-size: 5em; text-align: center">☯️</div>
+<em style="display: block; text-align:center">In a tiny universe.<br/> The smallest pinch of gold,<br/> is worth a mountain.</em> -->
 
 ---
 
