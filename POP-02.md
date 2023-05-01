@@ -7,9 +7,10 @@ Purpose:
  - Compatiblity with most modern digital devices.
  - The simpler the better.
 
+There are two types of Segments: Key and Block.
+
 ![Fig 1.](./fig/pop-02.png)
 
-There are two types of Segments: Key and Block.
 
 ## Key Segment
 POP-01 public keys are simply prefixed with a `(`
