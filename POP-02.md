@@ -9,8 +9,6 @@ Purpose:
 
 This spec describes 1 format byte and two types of segments: Key and Block.
 
-![Fig 1.](./fig/pop-02.png)
-
 ## FMT
 
 fmt is short for format.  
@@ -62,7 +60,7 @@ Note: `sig` is synonymous with `BlockID`
 <small>Sample in hex</small>
 
 ```
-2909649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b
+504943302909649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b
 ```
 
 ### Block Header
@@ -105,3 +103,4 @@ then the start of chain **can** be denoted using the following magic-bytes:
 ```
 <sup>If you can decode this, well done.</sup>
 
+![Fig 1.](./fig/pop-02.png)
