@@ -1,19 +1,45 @@
 # POP-02: Binary Block and Chain
 
 Purpose:
+
  - A **verifiable** and highly **transferable** data container.
  - Flat memory format, zero copy on read.
- - Append on write.
  - Compatiblity with most modern digital devices.
  - The simpler the better.
 
 This spec describes 1 format byte and two types of segments: Key and Block.
 
+Layout Key:
+```
+| fmt | key |
+```
+
+Layout Block:
+```
+| fmt | sig | psig | size | data |
+```
+
+When combined in a buffer they can form a feed (list of linked blocks and keys).
+
+Layout Feed:
+
+```
+| MAGIC | KEY0 |  BLK0 | BLK1 | KEY2 | BLK2|
+```
+
 ## FMT
+```
+   bit | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+   var |-- RESERVED ---| C | P | G | T |
+   KEY | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+Block0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 1 |
+
+```
 
 fmt is short for format.  
 It is a single byte and hints the loader what kind of data to expect.
 
+<!-- TMI
 **bit values**  
 
 Bit 7 being the highest bit and 0 the lowest.
@@ -28,9 +54,10 @@ Bit 7 being the highest bit and 0 the lowest.
 | 5   | RESERVED | Always `1`                       |
 | 6   | RESERVED | Always `0`                       |
 | 7   | RESERVED | Always `0`                       |
+-->
 
 ## Key Segment
-POP-01 public keys presented in their binary form and prefixed with the ASCII char `(`.
+Public keys are presented in their binary form and prefixed with the ASCII char `(`.
 `(<32bytes Public Key>`
 
 <small>Sample in hex</small>
@@ -62,7 +89,7 @@ Note: `sig` is synonymous with `BlockID`
 ```
 504943302909649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b
 ```
-
+<!-- TMI
 ### Block Header
 
 The header starts with one byte that specifies the block format:
@@ -76,7 +103,7 @@ The header starts with one byte that specifies the block format:
 | Lite Child   | 0010 0101 | %        | 1    | 65    | 129   | 131   |
 | Phat Child   | 0010 0111 | '        | 1    | 65    | 129   | 133   |
 | KEY (32B)    | 0110 1010 | k        | n/a  | n/a   | n/a   | n/a   |
-
+-->
 ## Chain
 
 A chain is a flat buffer that contains a set of keys and blocks  
@@ -85,8 +112,10 @@ signature of it's predecessor.
 
 This provides a simple way to transmit verifiable data between nodes.
 
-All keys required to validate the chain _should_ be included, but a key _must_ never
+<!-- TMI
+All keys required to validate the chain should be included, but a key must never
 occur after a block that depends on it.
+-->
 
 When a chain is stored or transfered over an unlikely medium,
 then the start of chain **can** be denoted using the following magic-bytes:
