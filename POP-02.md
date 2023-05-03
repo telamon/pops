@@ -16,15 +16,19 @@ This spec describes one _Fmt_ byte and two types of segments: _Key_ and _Block_.
 If repeated in a buffer they form a _Chain_ of linked blocks and keys.
 
 ## Key
-Public keys are presented in their binary form and prefixed with the ASCII char `°`
+
+Public keys are stored in their binary form and prefixed with the ASCII char `°`
+
 ```
 °<32bytes Public Key>
 ```
 
 <small>Hex-encoded sample</small>
+
 ```
-6aee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a1
+b0ee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a1
 ```
+
 <!-- Secret:
 f1d0ea8c8dc3afca9766ee6104f02b6ea427f1d24e3e4d6813b09946dff11dfa
 -->
@@ -36,10 +40,21 @@ It is a single byte and hints the loader at which offsets data can be expected.
 
 - High nibble (bits 4..7) always `1011`
 - Low nibble (bits 0..3) contain flags:
+<!--
+Not sure which is less cluttered
     - `0: type` unset: Key | set: Block
     - `1: genesis` unset: `psig` is 64-zeroes | set: `psig` follows `sig`
     - `2: phat` (unset: `Size` is u16 | set: `Size` is u32)
     - `3: tail` (unset: End of Chain | set: more segments follow)
+-->
+
+| bit | flag    | unset (0)     | set (1)              |
+|-----|---------|---------------|----------------------|
+| 0   | type    | Key           | Block                |
+| 1   | genesis | no parent     | `psig` follows `sig` |
+| 2   | phat    | `size` is u16 | `size` is u32        |
+| 3   | tail    | not last      | End of Chain         |
+
 
 <small>Samples</small>
 
@@ -55,7 +70,7 @@ solo_block[0]   = base2 1011 1001 = '¹'
 big_block[1]    = base2 1011 1101 = '½'
 ```
 
-## Block Segment
+## Block
 A block contains user-land data and a signature.  
 It might contain a parent signature if required by application.
 
@@ -75,7 +90,7 @@ Note: `sig` is in some contexts synonymous with `BlockID`
 <small>Hex-encoded sample</small>
 
 ```
-504943302909649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b
+b98c4279609ff6b59ccd37272d6ea94b48025526b75b994476c96748883e23ca3ce1a7808ad8866b5a1db9d4d859431cc5f15b5a8ad0bbf82b3096b2029e92e8b400046861636b
 ```
 <!-- TMI
 ### Block Header
@@ -92,6 +107,7 @@ The header starts with one byte that specifies the block format:
 | Phat Child   | 0010 0111 | '        | 1    | 65    | 129   | 133   |
 | KEY (32B)    | 0110 1010 | k        | n/a  | n/a   | n/a   | n/a   |
 -->
+
 ## Chain
 
 <small>Layout</small>
@@ -116,7 +132,7 @@ The magic-sequence should be ignored when loading.
 <small>Hex-encoded sample (chain with 1 key and 2 blocks)</small>
 
 ```
-6aee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a12109649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c652500046861636b2b14b5e829984a3dcd62f9983a56aa4f6eb6ba0a2c62e0b382fbf1b674a45b69b725ea41ce9622ffa1c35c3ff251d7dac4fbfa744cc76afbd84557a869544cef5a09649b2b6c323c19095b2bc69f1992e41e61e7364a048f07510b82046919be79be50c6bcd29cb6da13185446991d630bedef2326eaccc7ef0e8ebe7ff36c65250006706c616e6574
+50494330b0ee2f22cacb2e49bbb0d54ff1d9d912323787d81f08e73bb61a215d04029299a1b18c4279609ff6b59ccd37272d6ea94b48025526b75b994476c96748883e23ca3ce1a7808ad8866b5a1db9d4d859431cc5f15b5a8ad0bbf82b3096b2029e92e8b400046861636bbb43c9faf94770e7f38f5cbb5c4987412077ef5586844be9f76f9f9fe552c211a7a663afcc9d96f37435ae2f1732d2a5b7c4a31012094cc40581413f76da4d2dd18c4279609ff6b59ccd37272d6ea94b48025526b75b994476c96748883e23ca3ce1a7808ad8866b5a1db9d4d859431cc5f15b5a8ad0bbf82b3096b2029e92e8b40006706c616e6574
 ```
 
 _If you can decode this, well done.  
