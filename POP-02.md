@@ -55,7 +55,6 @@ Not sure which is less cluttered
 | 2   | phat    | `size` is u16 | `size` is u32        |
 | 3   | tail    | not last      | End of Chain         |
 
-
 <small>Samples</small>
 
 ```
@@ -71,6 +70,7 @@ big_block[1]    = base2 1011 1101 = '½'
 ```
 
 ## Block
+
 A block contains user-land data and a signature.  
 It might contain a parent signature if required by application.
 
