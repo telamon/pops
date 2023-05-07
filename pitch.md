@@ -18,23 +18,22 @@ It's time to reboot.
 
 ## Solution
 
-The Pico\* protocols aim to create a distributed content delivery network using dumb silos that are free or paid, decentralized or otherwise.
+The Pico\* protocols aim to create a distributed content delivery network using easy to implement data storages (we call them silos) that are free or paid, decentralized or otherwise.
 
-The `POP` specifications add to what is known as the _Progressive Web Application_ specifications and
+The `POP` specifications add to what is known as the _Progressive Web Application_ specifications and 
 gently detach them from their HTTPS dependencies.
 
 Think of it as ronin webapps that wander between hosts but belong to no server.
 
 A Pico web app has many advantages:
-- Deployed in 0 seconds.
-- Does not care where it's loaded from. (P2P, QRCode, HTTP, URL)
+- Remove deploy complexity an dependencies.
+- Does not care where it's loaded from.
 - Does not own it's users and never their data.
 - Functions happily with or without an connection.
-- Should be built and published using only a browser.
-- Is tiny and unassuming.
+- Is tiny and compatible.
 
 The recent emergence of the `nostr` network, provides a viable alternative to bootstrap p2p applications,
-using only frontend technology.
+we'll try to be compatible with it and other such networks where it makes sense.
 
 ## Vision
 
@@ -43,7 +42,12 @@ downloadable for offgrid ventures or relayed in the spirit of sneakernet.
 
 I thought it would be better that everyone should have their own internet, because most likely we already do.
 
-The vision is the next iteraton of the web-browsing and it is not a small undertaking.
+The vision is the next iteraton of communication and it is not a small undertaking,
+luckily we're not alone.
+
+There are multitudes of independent actors all devloping new public patent free specifications,
+forming the scaffolding for a digital network without a super node.
+
+So may the fittest specs evolve into standards.
 
 > It's done when it's done.
-
