@@ -7,7 +7,7 @@ Which removes the need for a key-segment type altogether.
 
 Purpose:
 
- - A **verifiable** and **highly transferable** data container.
+ - A **verifiable** and **highly stashable** data container.
  - Flat Memory, no `memcpy` no `alloc`
  - Unrestricted user land.
  - Readable on all modern digital devices.
