@@ -1,4 +1,8 @@
 # POP-02: Binary Block and Chain
+`Draft: v5`
+Proposal: replace bit 0 of fmt with `recoveryBit` of block-signature; 
+Which removes the need for a key-segment type altogether.
+
 `Draft: v4.1`
 
 Purpose:
