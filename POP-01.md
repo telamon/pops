@@ -1,9 +1,8 @@
 # POP-01 Identity
 
-An individual's Identity is a self generated elliptic curve keypair using [BIP-0340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki) variant.
+An individual's identity is a self generated keypair using curve `secp256k1` and `sha256` hashes.
 
-On protocol level keys must be encoded HEX-string wherever identifier mapping is considered.
+On protocol level and in developer context HEX-string encoding is preferred; otherwise we use plain binary in tranmission.
 
-~~Human-shared usecases
-[z-base-32](https://philzimmermann.com/docs/human-oriented-base-32-encoding.txt)~~ TBD.
-
+- We do not specify any identity management, we trust users to hold their own keys.  
+- We do not specify any recovery schemes, we trust users to learn (not-)lose their keys. 
