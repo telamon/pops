@@ -1,9 +1,9 @@
-POPs
+P0Ps
 ====
 
-POPs is short for **Pico\* Overclock Protocols**.  
+POPs is short for **PiC0\* Overclock Protocols**.  
 
-They're written with the purpose to document and implement:
+They're written with the purpose to entertain, document and implement:
 <details>
 <summary style="color: purple">New Internet Technology 🟣</summary>
 <br/>
