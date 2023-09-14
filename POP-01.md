@@ -1,6 +1,6 @@
 # POP-01 Identity
 
-An individual's identity is a self generated keypair using curve `secp256k1` and `sha256` hashes.
+An individual's identity is a self generated keypair using curve `secp256k1` and `sha256` hashes. ([bip340](https://bips.xyz/340#user-content-public-key-generation) looks tempting, still evaluating)
 
 On protocol level and in developer context HEX-string encoding is preferred; otherwise we use plain binary in tranmission.
 
